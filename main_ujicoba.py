@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 import plotly.graph_objs as go
 from datetime import datetime
 from PIL import Image
+import pytz
 
 image = Image.open('bareng.png')
 
@@ -67,7 +68,7 @@ def update_output(output_container, sensor_data, unit, topic_label):
 
 # Fungsi untuk memperbarui data pada grafik garis
 def update_line_chart(chart_container, data, sensor_data):
-    current_time = datetime.now().strftime("%H:%M:%S")
+    current_time = datetime.now(pytz.timezone("Asia/Jakarta")).strftime("%H:%M:%S")
     data.append((current_time, sensor_data))
     
     # Proses data waktu untuk sumbu x
