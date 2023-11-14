@@ -50,13 +50,13 @@ def on_message(client, userdata, msg):
     try:
         sensor_data = msg.payload.decode("utf-8")  # Parsing pesan MQTT
         if msg.topic == topic_red:
-            update_output(output_container1, sensor_data, "tes", "red")  # Perbarui output nilai untuk topik pertama
+            update_output(output_container1, sensor_data, "red", "red")  # Perbarui output nilai untuk topik pertama
             update_line_chart(chart_container1, data1, sensor_data)  # Perbarui grafik garis untuk topik pertama
         elif msg.topic == topic_green:
-            update_output(output_container2, sensor_data, "tes", "green")  # Perbarui output nilai untuk topik kedua
+            update_output(output_container2, sensor_data, "green", "green")  # Perbarui output nilai untuk topik kedua
             update_line_chart(chart_container2, data2, sensor_data)  # Perbarui grafik garis untuk topik kedua
         elif msg.topic == topic_blue:
-            update_output(output_container3, sensor_data, "tes", "blue")  # Perbarui output nilai untuk topik kedua
+            update_output(output_container3, sensor_data, "blue", "blue")  # Perbarui output nilai untuk topik kedua
             update_line_chart(chart_container3, data3, sensor_data)  # Perbarui grafik garis untuk topik kedua
     except Exception as e:
         st.error(f"Error parsing MQTT message: {e}")
